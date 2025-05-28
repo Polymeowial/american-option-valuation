@@ -43,9 +43,13 @@ Continue this process backwardly till time 0, we obtain the ``RealizedPayOff`` v
 ## Notebook Summary
 Below is the summary for each part in LSM.ipynb
 
-- Part A: import functions, moduled used in the project.
+- Part A: Importing functions and modules for the project.
 - Part B: Visualizing MFST daily closing price
-- Part C: The LSM_Put() function implements the core LSM algorithm, while the other functions serve as helper functions.
-- Part D: Estimating 2 parameters, volatility ``sigma`` and risk-free rate ``r``, of the stock price model.
-- Part E: Comparing the observed market value of options with values obtained from LSM.
-- Part F: Exploring the difference between European put and American put at different strike price for a short term maturity (15 days) and a longer term maturity (1 year)
+- Part C: The code for LSM method <br>
+  The LSM_Put() function implements the core LSM algorithm, while the other functions serve as helper functions.
+- Part D: Estimating 2 parameters, volatility ``sigma`` and risk-free rate ``r``, for the GBM model of stock price. <br>
+``sigma`` is estimated using the sample standard deviation on log returns. <br>
+``r`` is estimated using the 4-week T-bills obtained from FRED.
+- Part E: Comparing the observed market value with alues obtained from LSM. <br>
+In-the-money puts is collected from Yahoo finance on May 14th 2025. These observed values is then compared to the values obtained from LSM.
+- Part F: Exploring the difference between European put and American put (obtained from LSM method) at different strike prices for a short term maturity (15 days) and a longer term maturity (1 year)
