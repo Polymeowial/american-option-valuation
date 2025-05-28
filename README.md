@@ -39,6 +39,9 @@ and __Continuation value__ is estimated using a linear regression on stock price
 
 Continue this process backwardly till time 0, we obtain the ``RealizedPayOff`` values at time 0, average these we will get the valuation for American put.
 
+## Covergence test
+
+
 
 ## Notebook Summary
 Below is the summary for each part in LSM.ipynb
