@@ -39,15 +39,9 @@ Continue this process backwardly till time 0, we obtain the ``RealizedPayOff`` v
 
 
 ## Notebook sections
-- Part A <br>
-  import functions, moduled used in the project.
-- Part B <br>
-  Visualizing MFST daily closing price
-- Part C <br>
-  The code for LSM algorithm along with some helper funtions used in the algorithm.
-- Part D <br>
-  Estimating 2 parameters, volatility ``sigma`` and risk-free rate ``r``, of the stock price model.
-- Part E <br>
-  Comparing the observed market value of options with values obtained from LSM.
-- Part F <br>
-  Exploring the difference between European put and American put at different strike price for a short term matyrity (15 days) and a longer term maturity (1 year)
+- Part A: import functions, moduled used in the project.
+- Part B: Visualizing MFST daily closing price
+- Part C: The LSM_Put() function implements the core LSM algorithm, while the other functions serve as helper functions.
+- Part D: Estimating 2 parameters, volatility ``sigma`` and risk-free rate ``r``, of the stock price model.
+- Part E: Comparing the observed market value of options with values obtained from LSM.
+- Part F: Exploring the difference between European put and American put at different strike price for a short term maturity (15 days) and a longer term maturity (1 year)
