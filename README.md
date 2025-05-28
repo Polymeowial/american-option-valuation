@@ -38,7 +38,9 @@ and __Continuation value__ is estimated using a linear regression on stock price
 Continue this process backwardly till time 0, we obtain the ``RealizedPayOff`` values at time 0, average these we will get the valuation for American put.
 
 
-## Notebook sections
+## Notebook Summary
+LSM.ipynb covers the following key sections:
+
 - Part A: import functions, moduled used in the project.
 - Part B: Visualizing MFST daily closing price
 - Part C: The LSM_Put() function implements the core LSM algorithm, while the other functions serve as helper functions.
