@@ -32,7 +32,7 @@ $$
 \end{cases}
 $$
 
-where __Immediate exercise pay-off__ = $\max(Strike - S_{t_k} ,0)$ <br>
+where __Immediate exercise pay-off__ = $\max(Strike - S_{t_k} ,0)$ <br> <br>
 and __Continuation value__ is estimated using a linear regression on stock price $S_{t_k}$ wrt the discount of ``RealizedPayOff`` from previuous time ($t_{k+1}$), specifically, it is the fitted value of this regression. The functional form of the regression used in this project is a 3rd-degree polynomial.
 
 Continue this process backwardly till time 0, we obtain the ``RealizedPayOff`` values at time 0, average these we will get the valuation for American put.
