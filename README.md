@@ -24,7 +24,7 @@ where $W$ is a Wiener process.
 American put value is defined as <br>
 $V_t = \max_{\tau \in \mathcal{\tau}} E^\mathbb{Q} \[ e^{r (\tau - t)} (K - S_t) \ | \mathcal{F}_t]$ <br>
 
-where $\tau$ is a exercising strategy among the set of all possibles exercising strategy $\tau$.
+where $\tau$ is an exercising strategy among the set of all possibles exercising strategy $\tau$.
 
 
 
