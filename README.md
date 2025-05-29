@@ -1,9 +1,9 @@
 # Valuing American Option using LSM method
 
 ## Overview
-This project implements the Least-Squares Monte Carlo (LSM) method developed by Longstaff and Schwartz (2001) to value American put options. The approach leverages Monte Carlo simulation combined with regression techniques to estimate the optimal exercise strategy.
+This project implements the Least-Squares Monte Carlo (LSM) method developed by Longstaff and Schwartz (2001) to value American put options. The approach leverages Monte Carlo simulation combined with regression techniques to estimate for the optimal exercise strategy.
 
-The analysis uses daily closing price data for Microsoft Corporation (NASDAQ: MSFT) from May 14th 2024 to May 14th 2025.
+We uses daily closing price data for Microsoft Corporation (NASDAQ: MSFT) from May 14th 2024 to May 14th 2025.
 - The core implementation can be found in the LSM.ipynb notebook.
 - The historical price data is stored in MSFT.csv.
 
@@ -19,7 +19,7 @@ pip install -r requirements.txt
 
 ## LSM Algorthim 
 
-Using Monte Carlo simulation, we generate ``nTraj`` price paths of stock under the Geometric Brownian Motion (GBM). For each simulated path, the LSM algorithm estimates the option’s value, and the final valuation is computed as the average of these estimates.
+Using Monte Carlo simulation, we generate ``nTraj`` price paths of stock under the Geometric Brownian Motion (GBM). For each simulated path, the LSM algorithm estimates the option’s value (``RealizedPayOff``), and the final valuation is computed as the average of these estimates.
 
 LSM determines the value of American put at time 0 using a backward induction process, starting from time $t_\text{NStep}$ (maturity) to the time 0. <br>
 - At maturity $t_\text{NStep}$, ``RealizedPayOff`` = $\max(Strike - S_\text{NStep}, 0)$ (Immediate exercise pay-off) <br> <br>
@@ -36,7 +36,7 @@ $$
 
 where the __Continuation value__, $F(t_k)$, is estimated using a linear regression on functions of stock price $S_{t_k}$ with respect to the discount ``RealizedPayOff`` from previous time ($t_{k+1}$), specifically, it is the fitted value of this regression.
 
-This backward induction continues until time 0, where we obtain a set of ``RealizedPayOff`` values at time 0 for each path. The final estimate of the American put option’s value is the average of these payoffs.
+This backward induction continues until time 0, where we obtain a set of ``RealizedPayOff`` values at time 0 for each path. The final estimate of the American put is the average of these payoffs.
 
 ## Covergence test
 The functional form of the linear regression can be expressed as
@@ -45,7 +45,7 @@ $$
 F(t_k) = \sum^{i = 1-> NBasis} a_i \cdot L_i(S_{t_k})
 $$
 
-where the functions $L_i(S)$ serve as the regression’s basis functions. To choose the optimal number of basis functions ($NBasis$), one can use the convergence diagnostic described in the original paper. The core idea involves estimating the stopping rule using one set of simulated paths (insampled paths) and then applying it to a different set of paths (outsampled paths). Applied to this algorithm, we can fit the coefficients of the regression on the insampled paths on the outsampled paths. A well-designed algorithm should produce outsampled values that are very close to the corresponding insampled values.
+where the functions $L_i(S)$ serve as the regression’s basis functions. To choose the optimal number of basis functions ($NBasis$), one can use the convergence diagnostic described in the original paper. The core idea involves estimating the exercising rule using one set of simulated paths (insampled paths) and then applying it to a different set of paths (outsampled paths). For this algorithm, we can fit the coefficients of the regression estimated using the insampled paths on the outsampled paths. A well-designed algorithm should produce outsampled values that are very close to the corresponding insampled values.
 
 
 ## Notebook Summary
