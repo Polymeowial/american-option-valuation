@@ -40,7 +40,7 @@ and __Continuation value__ is estimated using a linear regression on stock price
 This backward induction continues until time 0, where we obtain a set of ``RealizedPayOff`` values at time 0 for each path. The final estimate of the American put option’s value is the average of these payoffs.
 
 ## Covergence test
-To test for the convergence of the simulation, we applied the exercising rules from a set of price paths (insampled paths) to a different set of price paths (outsampled paths), if the 2 values calculated using insampled and outsampled paths don't differ significantly, it could be that the simulation has converged.
+This diagnostic test for simulation convergence is described in the original paper and can be used to determine the optimal number of basis functions. The core idea involves estimating the stopping rule using one set of simulated paths (insampled paths) and then applying it to a different set of paths (outsampled paths). Applied to this algorithm, we can fit the coefficients of the regression on the insampled paths on the outsampled paths. A well-designed algorithm should produce outsampled values that are very close to the corresponding insampled values.
 
 
 ## Notebook Summary
