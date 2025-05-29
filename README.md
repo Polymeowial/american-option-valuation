@@ -19,7 +19,7 @@ pip install -r requirements.txt
 
 ## LSM Algorthim 
 
-Using Monte Carlo simulation, we generate ``nTraj`` price paths of the stock under the Geometric Brownian Motion (GBM). For each simulated path, the LSM algorithm estimates the option’s value, and the final valuation is computed as the average of these estimates.
+Using Monte Carlo simulation, we generate ``nTraj`` price paths of stock under the Geometric Brownian Motion (GBM). For each simulated path, the LSM algorithm estimates the option’s value, and the final valuation is computed as the average of these estimates.
 
 LSM determines the value of American put at time 0 using a backward induction process, starting from time $t_\text{NStep}$ (maturity) to the time 0. <br>
 - At maturity $t_\text{NStep}$, ``RealizedPayOff`` = $\max(Strike - S_\text{NStep}, 0)$ (Immediate exercise pay-off) <br> <br>
@@ -35,12 +35,12 @@ $$
 $$
 
 where __Immediate exercise pay-off__ = $\max(Strike - S_{t_k} ,0)$ <br> <br>
-and __Continuation value__ is estimated using a linear regression on stock price $S_{t_k}$ wrt the discount of ``RealizedPayOff`` from previous time ($t_{k+1}$), specifically, it is the fitted value of this regression. The functional form of the regression used in this project is a 3rd-degree polynomial.
+and __Continuation value__ is estimated using a linear regression on stock price $S_{t_k}$ with respect to the discount ``RealizedPayOff`` from previous time ($t_{k+1}$), specifically, it is the fitted value of this regression. The functional form of the regression used in this project is a 3rd-degree polynomial.
 
 This backward induction continues until time 0, where we obtain a set of ``RealizedPayOff`` values at time 0 for each path. The final estimate of the American put option’s value is the average of these payoffs.
 
 ## Covergence test
-To test for the convergence of the simulation, we applied 
+To test for the convergence of the simulation, we applied the exercising rules from a set of price paths (insampled paths) to a different set of price paths (outsampled paths), if the 2 values calculated using insampled and outs ampled paths don't 
 
 
 ## Notebook Summary
