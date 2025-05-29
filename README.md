@@ -29,18 +29,23 @@ Specifically, we will exercise if
 $$
 \text{Exercise} =
 \begin{cases}
-\text{Yes, if the put is in-the-money and Immediate execise pay-off > Continuation value},\\
+\text{Yes, if the put is in-the-money and Immediate execise pay-off $\max(Strike - S_{t_k} ,0)$ > Continuation value $F(t_k)$},\\
 \text{No, otherwise.}
 \end{cases}
 $$
 
-where __Immediate exercise pay-off__ = $\max(Strike - S_{t_k} ,0)$ <br> <br>
-and __Continuation value__ is estimated using a linear regression on stock price $S_{t_k}$ with respect to the discount ``RealizedPayOff`` from previous time ($t_{k+1}$), specifically, it is the fitted value of this regression. The functional form of the regression used in this project is a 3rd-degree polynomial.
+where the __Continuation value__, $F(t_k)$, is estimated using a linear regression on functions of stock price $S_{t_k}$ with respect to the discount ``RealizedPayOff`` from previous time ($t_{k+1}$), specifically, it is the fitted value of this regression.
 
 This backward induction continues until time 0, where we obtain a set of ``RealizedPayOff`` values at time 0 for each path. The final estimate of the American put option’s value is the average of these payoffs.
 
 ## Covergence test
-This diagnostic test for simulation convergence is described in the original paper and can be used to determine the optimal number of basis functions. The core idea involves estimating the stopping rule using one set of simulated paths (insampled paths) and then applying it to a different set of paths (outsampled paths). Applied to this algorithm, we can fit the coefficients of the regression on the insampled paths on the outsampled paths. A well-designed algorithm should produce outsampled values that are very close to the corresponding insampled values.
+The functional form of the linear regression can be expressed as
+
+$$
+F(t_k) = \sum^{i = 1-> NBasis} a_i \cdot L_i(S_{t_k})
+$$
+
+where the functions $L_i(S)$ serve as the regression’s basis functions. To choose the optimal number of basis functions ($NBasis$), one can use the convergence diagnostic described in the original paper. The core idea involves estimating the stopping rule using one set of simulated paths (insampled paths) and then applying it to a different set of paths (outsampled paths). Applied to this algorithm, we can fit the coefficients of the regression on the insampled paths on the outsampled paths. A well-designed algorithm should produce outsampled values that are very close to the corresponding insampled values.
 
 
 ## Notebook Summary
