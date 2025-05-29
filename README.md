@@ -45,7 +45,11 @@ $$
 F(t_k) = \sum^{i = 1-> NBasis} a_i \cdot L_i(S_{t_k})
 $$
 
-where the functions $L_i(S)$ serve as the regression’s basis functions. To choose the optimal number of basis functions ($NBasis$), one can use the convergence diagnostic described in the original paper. The core idea involves estimating the exercising rule using one set of simulated paths (insampled paths) and then applying it to a different set of paths (outsampled paths). For this algorithm, we can fit the coefficients of the regression estimated using the insampled paths on the outsampled paths. A well-designed algorithm should produce outsampled values that are very close to the corresponding insampled values.
+where the functions $L_i(S)$ serve as the regression’s basis functions. 
+
+To choose the optimal number of basis functions ($NBasis$), one can use the convergence diagnostic described in the original paper. The core idea involves estimating the exercising rule using one set of simulated paths (insampled paths) and then applying it to a different set of paths (outsampled paths). 
+
+For this LSM method, we can fit the coefficients of the regression estimated using the insampled paths on the outsampled paths. A well-designed algorithm should produce outsampled values that are very close to the corresponding insampled values.
 
 
 ## Notebook Summary
@@ -53,7 +57,9 @@ Below is the summary for each part in the file LSM.ipynb
 
 **Part A:** Import necessary functions and modules used throughout the project.
 
-**Part B:** Visualize the daily closing prices of MFST stock.
+**Part B:** Daily closing prices of MFST stock and its observed American put prices.
+- The MSFT stock price is collected from May 14th 2024 to May 14th 2025
+- The American put prices are prices on May 14th 2025. Only in-the-money puts are collected. Data is collected on Yahoo Finance.
 
 **Part C:** The code for LSM method <br>
   The LSM_Put() function implements the core LSM algorithm and other functions in this part serve as helper functions.
@@ -71,8 +77,8 @@ Apply the converegence test to determine the optimal number of basis functions.
 1. Compares the valuations obtained from LSm with the observed market prices for in-the-money American puts. <br>
 (observed data is collected from Yahoo Finance on May 14, 2025)
 
-2. Assesses sensitivity of the LSM valuation to changes in volatility ``sigma``.
+1. Assesses sensitivity of the LSM valuation to changes in volatility ``sigma``.
 
-3. Explore the pricing difference between European and American puts (valued using the LSM method) across a range of strike prices, for both short-term (15-day) and long-term (1-year) maturities.
+2. Explore the pricing difference between European and American puts (valued using the LSM method) across a range of strike prices, for both short-term (15-day) and long-term (1-year) maturities.
 
 
