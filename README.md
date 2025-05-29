@@ -55,30 +55,29 @@ For this LSM method, we can fit the coefficients of the regression estimated usi
 ## Notebook Summary
 Below is the summary for each part in the file LSM.ipynb
 
-**Part A:** Import necessary functions and modules used throughout the project.
+**Part A. Setups**: Import necessary functions and modules used throughout the project.
 
-**Part B:** Daily closing prices of MFST stock and its observed American put prices.
-- The MSFT stock price is collected from May 14th 2024 to May 14th 2025
-- The American put prices are prices on May 14th 2025. Only in-the-money puts are collected. Data is collected on Yahoo Finance.
+**Part B. Data**: Daily closing prices of MFST stock and its observed American put prices.
+- The MSFT stock price is collected from May 14th 2024 to May 14th 2025. Data is collected on [MarketWatch](https://www.marketwatch.com/investing/stock/MSFT/download-data?startDate=5/14/2024&endDate=5/14/2025).
+- The American put prices are collected on May 14th 2025. Only in-the-money puts are collected. Data is collected on Yahoo Finance.
 
-**Part C:** The code for LSM method <br>
+**Part C. LSM**: The code for LSM method <br>
   The LSM_Put() function implements the core LSM algorithm and other functions in this part serve as helper functions.
 
-**Part D:** Using visualization and some statistical tests to check whether stock price follow the assumption of GBM model.
+**Part D. Checking model assumption**: Using visualization and some statistical tests to check whether stock price follow the assumption of GBM model.
 
-**Part E:** Estimate key parameters for the GBM model: <br>
+**Part E. Estimating model parameters**: Estimate key parameters for the GBM model: <br>
 - Volatility ``sigma`` is estimated using the sample standard deviation on log returns. <br>
 - Risk-free rate ``r`` is estimated using the 4-week T-bills obtained from FRED (Federal Reserve Economic Data).
 
-**Part F:** Covergence test <br>
+**Part F. Convergence test**: Covergence test <br>
 Apply the converegence test to determine the optimal number of basis functions.
 
-**Part G:** Empirical results <br>
-1. Compares the valuations obtained from LSm with the observed market prices for in-the-money American puts. <br>
-(observed data is collected from Yahoo Finance on May 14, 2025)
+**Part G. Empirical results**: <br>
+1. Compares the valuations obtained from LSM with the observed market prices for in-the-money American puts. <br>
 
-1. Assesses sensitivity of the LSM valuation to changes in volatility ``sigma``.
+2. Assesses sensitivity of the LSM valuation to changes in volatility ``sigma``.
 
-2. Explore the pricing difference between European and American puts (valued using the LSM method) across a range of strike prices, for both short-term (15-day) and long-term (1-year) maturities.
+3. Explore the pricing difference between European and American puts (valued using the LSM method) across a range of strike prices, for both short-term (15-day) and long-term (1-year) maturities.
 
 
