@@ -53,7 +53,7 @@ For this LSM method, we can fit the coefficients of the regression estimated usi
 
 
 ## Notebook Summary
-Below is the summary for each part in the file LSM.ipynb
+Below is the summary for each part in the file ``LSM.ipynb``
 
 **Part A. Setups**: Import necessary functions and modules used throughout the project.
 
