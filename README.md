@@ -67,7 +67,7 @@ Below is the summary for each part in the file LSM.ipynb
 **Part D. Checking model assumption**: Using visualization and some statistical tests to check whether stock price follow the assumption of GBM model.
 
 **Part E. Estimating model parameters**: Estimate key parameters for the GBM model: <br>
-- Volatility ``sigma`` is estimated using the sample standard deviation on log returns. <br>
+- Volatility ``sigma`` is estimated using the sample standard deviation of log returns. <br>
 - Risk-free rate ``r`` is estimated using the 4-week T-bills obtained from FRED (Federal Reserve Economic Data).
 
 **Part F. Convergence test**: Covergence test <br>
